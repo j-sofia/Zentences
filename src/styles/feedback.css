@@ -1,0 +1,230 @@
+.answer-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 11px;
+}
+.answer-label-row label {
+  font-size: 11px;
+  color: #53614f;
+  font-weight: 500;
+}
+.answer-label-row > span {
+  font-size: 8px;
+  color: #a0a695;
+}
+.answer-section textarea {
+  display: block;
+  resize: vertical;
+  min-height: 105px;
+  width: 100%;
+  padding: 15px;
+  background: #fffefa;
+  border: 1px solid #dfe3d6;
+  border-radius: 7px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #374933;
+}
+.answer-section textarea::placeholder {
+  color: #b0b3a6;
+}
+.answer-section textarea:disabled {
+  background: #f7f8f1;
+  color: #76846a;
+}
+.answer-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 13px;
+  gap: 12px;
+}
+.keyboard-hint {
+  font-size: 8px;
+  color: #a8ac9a;
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+.feedback-section {
+  padding: 22px 25px;
+  background: #f7f0e7;
+  border-top: 1px solid #e9dfd0;
+}
+.feedback-good {
+  background: #eef3e9;
+  border-top-color: #dce6d3;
+}
+.feedback-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.feedback-icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8d9c2;
+  border-radius: 50%;
+  color: #a2854f;
+  flex-shrink: 0;
+}
+.feedback-good .feedback-icon {
+  background: #dce9d5;
+  color: #64825a;
+}
+.feedback-heading h3 {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.feedback-heading p {
+  font-size: 10px;
+  color: #929481;
+  line-height: 1.9;
+  margin-top: 4px;
+}
+.feedback-score {
+  font-family: Georgia, serif;
+  font-size: 29px;
+  color: #8a9169;
+  margin-left: auto;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.feedback-score small {
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  color: #969b83;
+}
+.feedback-detail {
+  font-size: 10px;
+  line-height: 1.9;
+  margin-top: 17px;
+  color: #76806a;
+}
+.feedback-detail strong {
+  font-weight: 500;
+  color: #556448;
+}
+.feedback-detail ul {
+  margin: 5px 0 0;
+  padding-left: 15px;
+}
+.reference-toggle {
+  margin-top: 13px;
+}
+.reference-translation {
+  font-size: 11px;
+  line-height: 1.8;
+  margin-top: 10px;
+  border-left: 2px solid #c5d0b6;
+  padding: 0 0 0 12px;
+}
+.reference-translation small {
+  display: block;
+  margin-top: 6px;
+  color: #8a917d;
+  font-size: 9px;
+}
+.reference-translation > span {
+  display: block;
+  font-size: 8px;
+  color: #a0a78e;
+  margin-top: 6px;
+}
+.grading-note {
+  font-size: 8px;
+  line-height: 1.6;
+  color: #a3a58f;
+  margin-top: 18px;
+}
+.word-bank {
+  margin: 0 25px 18px;
+  padding: 15px;
+  background: #f4f4eb;
+  border: 1px solid #e3e6d4;
+  border-radius: 7px;
+}
+.word-bank > p {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #8e9980;
+  margin-bottom: 11px;
+}
+.word-bank > div {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  max-height: 180px;
+  overflow-y: auto;
+}
+.word-bank button {
+  background: #fffef9;
+  border: 1px solid #e3e6d8;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  color: #5e7550;
+}
+.session-complete {
+  padding: 45px 30px;
+  text-align: center;
+}
+.success-symbol {
+  background: #e6eedf;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #748c5b;
+  margin: 0 auto 25px;
+}
+.session-complete h2 {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+  margin-top: 14px;
+}
+.session-complete > p {
+  font-size: 12px;
+  color: #939886;
+  margin-top: 12px;
+}
+.session-results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 28px 0;
+  gap: 35px;
+}
+.session-results strong {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: #70805b;
+  display: block;
+}
+.session-results span {
+  font-size: 9px;
+  color: #a0a38d;
+  display: block;
+  margin-top: 9px;
+}
+.session-complete > .text-button {
+  display: flex;
+  margin: 17px auto 0;
+}
+.standard-heading {
+  margin-bottom: 30px;
+}
+.standard-heading h1 {
+  font-size: 35px;
+}

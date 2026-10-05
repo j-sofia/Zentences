@@ -1,0 +1,12 @@
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+data/*
+!data/.gitkeep
+models/*
+!models/.gitkeep
+.env*
+*.log
+.DS_Store

@@ -1,0 +1,747 @@
+@media (max-width: 650px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.2s;
+    width: 235px;
+    padding: 30px 20px 20px;
+    z-index: 22;
+  }
+  .sidebar.is-open {
+    transform: translateX(0);
+  }
+  .brand {
+    font-size: 26px;
+    gap: 13px;
+  }
+  .brand-symbol {
+    width: 40px;
+    height: 43px;
+    font-size: 31px;
+  }
+  .brand-sub {
+    font-size: 6px;
+    letter-spacing: 1.25px;
+  }
+  .nav-item {
+    font-size: 13px;
+    gap: 14px;
+    padding: 13px 15px;
+  }
+  .nav-item.active:before {
+    left: 20px;
+  }
+  .sidebar-section-label {
+    font-size: 8px;
+  }
+  .sidebar-note {
+    margin-top: 45px;
+  }
+  .note-hanzi {
+    font-size: 24px;
+  }
+  .sidebar-note p {
+    font-size: 16px;
+  }
+  .note-caption {
+    font-size: 7px;
+  }
+  .sidebar-runtime strong {
+    font-size: 11px;
+  }
+  .sidebar-runtime small {
+    font-size: 8px;
+    max-width: 145px;
+  }
+  .privacy-note {
+    font-size: 8px;
+  }
+  .menu-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: #26382275;
+    z-index: 20;
+  }
+  .main-shell {
+    margin-left: 0;
+  }
+  .mobile-menu {
+    display: inline-flex;
+    margin-right: 12px;
+  }
+  .topbar {
+    height: 62px;
+    padding: 0 18px;
+  }
+  .breadcrumb {
+    font-size: 9px;
+    gap: 8px;
+  }
+  .breadcrumb > strong {
+    display: none;
+  }
+  .breadcrumb > svg {
+    display: none;
+  }
+  .topbar-right {
+    gap: 10px;
+  }
+  .local-badge {
+    font-size: 6px;
+    letter-spacing: 1px;
+  }
+  .top-settings {
+    width: 27px;
+    height: 27px;
+  }
+  .top-settings svg {
+    width: 15px;
+  }
+  main {
+    padding: 26px 19px 0;
+  }
+  .page-heading {
+    margin-bottom: 25px;
+    gap: 10px;
+    min-height: 104px;
+  }
+  .page-heading h1 {
+    font-size: 27px;
+    line-height: 1.25;
+    letter-spacing: -1px;
+    max-width: 300px;
+  }
+  .page-heading .eyebrow {
+    font-size: 7px;
+    letter-spacing: 1.4px;
+  }
+  .page-heading p {
+    font-size: 10px;
+    max-width: 260px;
+    line-height: 1.9;
+    margin-top: 9px;
+  }
+  .heading-illustration {
+    width: 70px;
+    height: 90px;
+    margin-top: 10px;
+  }
+  .heading-illustration span {
+    font-size: 55px;
+    right: 7px;
+  }
+  .heading-illustration div {
+    width: 39px;
+    height: 39px;
+    left: 0;
+  }
+  .heading-illustration i {
+    width: 16px;
+    height: 16px;
+    right: 0;
+    bottom: 14px;
+  }
+  .session-title {
+    font-size: 10px;
+  }
+  .session-count {
+    font-size: 8px;
+  }
+  .session-strip {
+    margin-bottom: 13px;
+  }
+  .exercise-top {
+    padding: 17px 17px 13px;
+  }
+  .exercise-top .eyebrow {
+    font-size: 6.5px;
+    letter-spacing: 1px;
+  }
+  .subtle-button {
+    font-size: 8px;
+    gap: 4px;
+  }
+  .subtle-button > svg {
+    width: 12px;
+  }
+  .sentence-stage {
+    margin: 0 13px 16px;
+    padding: 24px 16px;
+  }
+  .empty-stage {
+    min-height: 325px;
+    padding: 21px 12px;
+  }
+  .empty-stage h2 {
+    font-size: 27px;
+  }
+  .empty-stage > p {
+    font-size: 10px;
+    line-height: 1.8;
+  }
+  .empty-sentence-art span {
+    font-size: 31px;
+  }
+  .empty-sentence-art span.accent {
+    font-size: 38px;
+  }
+  .stage-privacy {
+    font-size: 7px;
+  }
+  .practice-bottom {
+    padding: 14px 17px;
+    font-size: 8px;
+  }
+  .practice-config {
+    margin-top: 12px;
+    padding: 17px 16px;
+  }
+  .config-field label {
+    font-size: 6.5px;
+  }
+  .config-field select {
+    font-size: 9px;
+  }
+  .below-card-note {
+    font-size: 6.5px;
+    gap: 4px;
+  }
+  .practice-aside {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .daily-card {
+    padding: 16px 14px;
+  }
+  .card-topline .eyebrow {
+    font-size: 6px;
+    letter-spacing: 1px;
+  }
+  .card-topline > svg {
+    width: 14px;
+  }
+  .daily-counter strong {
+    font-size: 33px;
+  }
+  .daily-counter > span {
+    font-size: 10px;
+  }
+  .daily-counter small {
+    font-size: 7px;
+  }
+  .daily-card p {
+    font-size: 7px;
+  }
+  .focus-card {
+    padding: 13px 15px;
+  }
+  .focus-hanzi {
+    font-size: 31px;
+  }
+  .focus-pinyin {
+    font-size: 9px;
+  }
+  .focus-card p {
+    font-size: 9px;
+    line-height: 1.7;
+  }
+  .focus-card .text-button {
+    font-size: 8px;
+  }
+  .collection-card {
+    gap: 8px;
+    padding: 5px 0;
+  }
+  .collection-icon {
+    width: 27px;
+    height: 31px;
+  }
+  .collection-icon > svg {
+    width: 15px;
+  }
+  .collection-card h3 {
+    font-size: 8px;
+  }
+  .collection-card p {
+    font-size: 7px;
+  }
+  .collection-card .icon-button {
+    width: 13px;
+  }
+  .app-footer {
+    margin-top: 29px;
+    padding: 20px 0;
+    gap: 12px;
+  }
+  .app-footer > span:last-child {
+    font-size: 6px;
+  }
+  .app-footer > span:first-child {
+    font-size: 6px;
+    letter-spacing: 1.4px;
+  }
+  .app-footer > span:nth-child(2) {
+    font-size: 7px;
+  }
+  .answer-section {
+    padding: 0 17px 20px;
+  }
+  .answer-label-row label {
+    font-size: 10px;
+  }
+  .answer-section textarea {
+    font-size: 11px;
+    padding: 12px;
+  }
+  .answer-toolbar .button {
+    font-size: 9px;
+    padding: 10px 11px;
+  }
+  .keyboard-hint {
+    font-size: 7px;
+  }
+  .chinese-sentence {
+    font-size: 27px;
+    letter-spacing: 2px;
+    padding: 20px 0;
+  }
+  .sentence-controls {
+    left: 16px;
+    right: 11px;
+    top: 12px;
+  }
+  .sentence-pinyin {
+    font-size: 10px;
+  }
+  .sentence-meta {
+    font-size: 7px;
+    gap: 7px;
+  }
+  .sentence-meta .text-button {
+    font-size: 7px;
+  }
+  .feedback-section {
+    padding: 20px 17px;
+  }
+  .feedback-heading h3 {
+    font-size: 11px;
+  }
+  .feedback-heading p {
+    font-size: 9px;
+  }
+  .feedback-score {
+    font-size: 25px;
+  }
+  .feedback-score small {
+    font-size: 7px;
+  }
+  .feedback-icon {
+    width: 25px;
+    height: 25px;
+  }
+  .feedback-detail {
+    font-size: 9px;
+  }
+  .reference-translation {
+    font-size: 10px;
+  }
+  .grading-note {
+    font-size: 7px;
+  }
+  .word-bank {
+    margin-left: 17px;
+    margin-right: 17px;
+  }
+  .session-complete {
+    padding: 35px 20px;
+  }
+  .session-complete h2 {
+    font-size: 25px;
+  }
+  .session-results {
+    gap: 20px;
+  }
+  .session-results span {
+    font-size: 8px;
+  }
+  .standard-heading h1 {
+    font-size: 29px;
+  }
+  .standard-heading > div > p {
+    max-width: 100%;
+  }
+  .standard-heading {
+    gap: 15px;
+  }
+  .vocabulary-toolbar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .search-box {
+    flex-basis: 100%;
+    height: 41px;
+  }
+  .vocabulary-toolbar > .button {
+    font-size: 9px;
+    min-height: 33px;
+    padding: 7px 11px;
+  }
+  .vocabulary-toolbar > span {
+    margin-left: auto;
+    font-size: 9px;
+  }
+  .vocabulary-table-head,
+  .vocabulary-row {
+    grid-template-columns: 0.9fr 0.85fr 1.6fr 32px;
+    gap: 10px;
+    padding: 13px 12px;
+  }
+  .vocabulary-table-head {
+    font-size: 6px;
+    letter-spacing: 0.7px;
+  }
+  .vocabulary-table-head > span:last-child {
+    font-size: 0;
+  }
+  .vocabulary-row {
+    min-height: 79px;
+  }
+  .table-hanzi {
+    font-size: 22px;
+  }
+  .table-pinyin {
+    font-size: 8px;
+    overflow-wrap: anywhere;
+  }
+  .table-meaning {
+    font-size: 8px;
+    line-height: 1.8;
+  }
+  .table-meaning small {
+    font-size: 6px;
+  }
+  .row-actions {
+    flex-direction: column;
+    gap: 3px;
+  }
+  .row-actions .icon-button {
+    width: 23px;
+    height: 23px;
+  }
+  .row-actions .icon-button svg {
+    width: 14px;
+  }
+  .practice-word-button {
+    width: 23px;
+    height: 23px;
+    padding: 4px;
+  }
+  .practice-word-button svg {
+    width: 11px;
+  }
+  .table-pagination {
+    font-size: 8px;
+    padding: 10px 12px;
+  }
+  .table-pagination > div {
+    gap: 7px;
+  }
+  .source-detail {
+    font-size: 8px;
+    align-items: flex-start;
+  }
+  .source-detail > svg {
+    width: 13px;
+    margin-top: 2px;
+  }
+  .stats-grid {
+    gap: 11px;
+  }
+  .stat-card {
+    padding: 16px 14px;
+  }
+  .stat-card > div {
+    font-size: 8px;
+    gap: 5px;
+  }
+  .stat-card > div > svg {
+    width: 14px;
+  }
+  .stat-card > strong {
+    font-size: 29px;
+    margin-top: 17px;
+  }
+  .stat-card > p {
+    font-size: 7px;
+  }
+  .history-card > .section-card-heading,
+  .activity-card > .section-card-heading,
+  .settings-card > .section-card-heading {
+    padding: 20px;
+  }
+  .section-card-heading h2 {
+    font-size: 21px;
+  }
+  .section-card-heading p {
+    font-size: 9px;
+  }
+  .history-row {
+    padding: 17px;
+    gap: 10px;
+  }
+  .history-row > div:first-child > span {
+    font-size: 20px;
+  }
+  .history-row p {
+    font-size: 9px;
+  }
+  .history-row > svg {
+    width: 12px;
+  }
+  .empty-list {
+    padding: 40px 20px;
+  }
+  .empty-list h3 {
+    font-size: 22px;
+  }
+  .empty-list p {
+    font-size: 10px;
+  }
+  .hardware-banner {
+    padding: 16px;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+  .hardware-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .hardware-banner h3 {
+    font-size: 12px;
+  }
+  .hardware-banner p {
+    font-size: 8px;
+    line-height: 1.9;
+  }
+  .setup-step {
+    gap: 12px;
+    margin-top: 25px;
+  }
+  .step-number {
+    width: 24px;
+    height: 24px;
+    font-size: 7px;
+    margin-top: 3px;
+  }
+  .setup-step-content .section-card-heading {
+    align-items: flex-start;
+    gap: 9px;
+  }
+  .setup-step-content .section-card-heading h2 {
+    font-size: 21px;
+  }
+  .setup-step-content .section-card-heading p {
+    font-size: 9px;
+  }
+  .connection-badge {
+    font-size: 7px;
+    padding: 5px 7px;
+  }
+  .connection-badge .status-dot {
+    width: 4px;
+    height: 4px;
+  }
+  .runtime-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .runtime-actions .button {
+    min-height: 39px;
+    font-size: 10px;
+  }
+  .runtime-actions .text-button {
+    margin-top: 4px;
+    font-size: 9px;
+  }
+  .fine-print {
+    font-size: 8px;
+    line-height: 1.9;
+  }
+  .model-card {
+    display: flex;
+    padding: 19px;
+    gap: 0;
+  }
+  .model-card h3 {
+    font-size: 25px;
+    margin-top: 15px;
+  }
+  .recommendation {
+    font-size: 6px;
+  }
+  .model-card .model-spec {
+    font-size: 8px;
+    margin-top: 7px;
+  }
+  .model-card > p {
+    font-size: 10px;
+    line-height: 1.9;
+    margin-top: 13px;
+    margin-bottom: 16px;
+  }
+  .model-card-links {
+    margin: 0 0 14px;
+    font-size: 8px;
+  }
+  .model-card .button {
+    font-size: 10px;
+    min-height: 39px;
+  }
+  .advanced-step {
+    padding-top: 19px;
+  }
+  .advanced-step details summary strong {
+    font-size: 11px;
+  }
+  .advanced-step details summary small {
+    font-size: 8px;
+  }
+  .import-panel p {
+    font-size: 9px;
+    line-height: 1.9;
+  }
+  .import-panel code {
+    font-size: 8px;
+  }
+  .import-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 9px;
+  }
+  .import-controls select {
+    min-width: 100%;
+    font-size: 9px;
+  }
+  .installed-model-row {
+    gap: 7px;
+    flex-wrap: wrap;
+    font-size: 9px;
+  }
+  .installed-model-row .text-button {
+    font-size: 9px;
+  }
+  .installed-model-row > svg {
+    width: 14px;
+  }
+  .ready-banner {
+    padding: 17px 15px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .ready-banner strong {
+    font-size: 11px;
+  }
+  .ready-banner .button {
+    flex-basis: 100%;
+    margin: 5px 0 0;
+  }
+  .setting-row {
+    padding: 20px;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  .setting-row h3 {
+    font-size: 11px;
+  }
+  .setting-row p {
+    font-size: 9px;
+    line-height: 1.8;
+  }
+  .setting-row select {
+    min-width: 130px;
+    max-width: 145px;
+    padding: 9px 7px;
+    font-size: 9px;
+  }
+  .setting-row .button {
+    font-size: 8px;
+    padding: 9px 10px;
+    min-height: 34px;
+    flex-shrink: 0;
+  }
+  .setting-row .button > svg {
+    width: 12px;
+  }
+  .switch {
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .about-note p {
+    font-size: 9px;
+    line-height: 1.8;
+  }
+  .modal-backdrop {
+    padding: 15px;
+  }
+  .modal-header {
+    padding: 20px;
+  }
+  .modal-header h2 {
+    font-size: 23px;
+  }
+  .review-sentence {
+    font-size: 27px;
+    padding: 5px 20px;
+  }
+  .review-answer {
+    padding: 20px;
+  }
+  .toast {
+    left: 50%;
+    bottom: 15px;
+    font-size: 10px;
+    width: max-content;
+    max-width: calc(100% - 30px);
+    padding: 12px;
+  }
+  .alert {
+    font-size: 10px;
+    line-height: 1.8;
+    padding: 12px;
+  }
+  .loading-state h2 {
+    font-size: 23px;
+    text-align: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.exercise-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.brand-sub {
+  font-size: 6px;
+  letter-spacing: 1.1px;
+}
+@media (max-width: 650px) {
+  .exercise-actions {
+    gap: 9px;
+  }
+  .exercise-actions .subtle-button {
+    font-size: 7px;
+  }
+  .brand-sub {
+    font-size: 6px;
+    letter-spacing: 1.1px;
+  }
+}

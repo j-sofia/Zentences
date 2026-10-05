@@ -1,0 +1,374 @@
+@media (min-width: 1500px) {
+  .sidebar {
+    width: 260px;
+    padding-left: 26px;
+    padding-right: 26px;
+  }
+  .main-shell {
+    margin-left: 260px;
+  }
+  .practice-layout {
+    grid-template-columns: minmax(0, 1fr) 270px;
+    gap: 32px;
+  }
+  .page-heading h1 {
+    font-size: 40px;
+  }
+  .practice-aside {
+    gap: 22px;
+  }
+  .empty-stage {
+    min-height: 385px;
+  }
+  .daily-card {
+    padding: 24px;
+  }
+  .focus-card {
+    padding: 24px;
+  }
+  .practice-card .sentence-stage {
+    margin-left: 28px;
+    margin-right: 28px;
+  }
+  .exercise-top {
+    padding: 25px 30px 20px;
+  }
+  .practice-bottom {
+    padding: 20px 30px;
+  }
+  .practice-config {
+    padding: 23px 27px;
+  }
+  .sentence-stage.empty-stage h2 {
+    font-size: 32px;
+  }
+  .brand {
+    font-size: 28px;
+  }
+}
+@media (max-width: 1150px) {
+  .sidebar {
+    width: 210px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .brand {
+    font-size: 23px;
+    gap: 9px;
+  }
+  .brand-sub {
+    font-size: 5.5px;
+    letter-spacing: 1.2px;
+  }
+  .brand-symbol {
+    width: 37px;
+    height: 41px;
+    font-size: 29px;
+  }
+  .nav-item.active:before {
+    left: 15px;
+  }
+  .main-shell {
+    margin-left: 210px;
+  }
+  main {
+    padding: 35px 30px 0;
+  }
+  .topbar {
+    padding: 0 30px;
+  }
+  .practice-layout {
+    grid-template-columns: minmax(0, 1fr) 210px;
+    gap: 19px;
+  }
+  .page-heading h1 {
+    font-size: 30px;
+  }
+  .heading-illustration {
+    width: 89px;
+  }
+  .heading-illustration span {
+    font-size: 68px;
+  }
+  .practice-config {
+    gap: 15px;
+    padding: 17px;
+  }
+  .config-tip {
+    display: none;
+  }
+  .config-field + .config-field {
+    padding-left: 15px;
+  }
+  .session-dots {
+    display: none;
+  }
+  .exercise-top {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .sentence-stage {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+  .answer-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .answer-label-row > span {
+    display: none;
+  }
+  .practice-bottom > span {
+    display: none;
+  }
+  .daily-card,
+  .focus-card {
+    padding: 17px;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .progress-main {
+    grid-template-columns: minmax(0, 1fr) 230px;
+  }
+  .vocabulary-table-head,
+  .vocabulary-row {
+    grid-template-columns: 1fr 1fr 2fr 98px;
+    gap: 15px;
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+  .row-actions {
+    gap: 3px;
+  }
+  .practice-word-button span {
+    display: none;
+  }
+  .model-grid {
+    gap: 10px;
+  }
+  .model-card {
+    padding: 14px;
+  }
+  .recommendation {
+    font-size: 5px;
+  }
+  .model-card h3 {
+    font-size: 19px;
+  }
+  .toast {
+    left: calc(50% + 95px);
+  }
+}
+@media (max-width: 900px) {
+  .sidebar {
+    width: 180px;
+    padding: 27px 12px 20px;
+  }
+  .brand {
+    font-size: 20px;
+    gap: 8px;
+    margin-left: 2px;
+    margin-bottom: 46px;
+  }
+  .brand-symbol {
+    width: 32px;
+    height: 36px;
+    font-size: 26px;
+    border-radius: 8px;
+  }
+  .brand-sub {
+    font-size: 4.5px;
+    letter-spacing: 1px;
+  }
+  .sidebar-section-label {
+    font-size: 7px;
+    padding-left: 13px;
+  }
+  .nav-item {
+    font-size: 10px;
+    gap: 10px;
+    padding: 11px 13px;
+  }
+  .nav-item > svg {
+    width: 16px;
+  }
+  .nav-item.active:before {
+    left: 12px;
+  }
+  .sidebar-note {
+    padding-left: 12px;
+    margin-top: 50px;
+  }
+  .note-hanzi {
+    font-size: 18px;
+  }
+  .sidebar-note p {
+    font-size: 13px;
+  }
+  .note-caption {
+    font-size: 6px;
+  }
+  .sidebar-runtime {
+    padding: 13px 8px;
+    gap: 6px;
+  }
+  .sidebar-runtime strong {
+    font-size: 9px;
+  }
+  .sidebar-runtime small {
+    font-size: 7px;
+    max-width: 103px;
+  }
+  .privacy-note {
+    font-size: 6px;
+    gap: 4px;
+  }
+  .main-shell {
+    margin-left: 180px;
+  }
+  main {
+    padding: 30px 25px 0;
+  }
+  .topbar {
+    padding: 0 25px;
+    height: 65px;
+  }
+  .practice-layout {
+    grid-template-columns: 1fr;
+  }
+  .practice-aside {
+    padding-top: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 17px;
+    margin-top: 5px;
+  }
+  .focus-card {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+  .daily-card {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .collection-card {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .quiet-tip {
+    display: none;
+  }
+  .page-heading h1 {
+    font-size: 28px;
+  }
+  .heading-illustration {
+    width: 83px;
+    height: 100px;
+  }
+  .empty-stage {
+    min-height: 320px;
+  }
+  .below-card-note {
+    margin-top: 13px;
+  }
+  .focus-hanzi {
+    font-size: 37px;
+    margin-top: 15px;
+  }
+  .focus-card p {
+    margin-top: 15px;
+  }
+  .progress-main {
+    grid-template-columns: 1fr;
+  }
+  .activity-card {
+    max-width: 100%;
+  }
+  .activity-chart {
+    height: 190px;
+    align-items: end;
+  }
+  .chart-bar-track {
+    max-width: 38px;
+  }
+  .model-grid {
+    grid-template-columns: 1fr;
+  }
+  .model-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 20px;
+    padding: 20px;
+  }
+  .model-card-top {
+    grid-column: 1 / -1;
+  }
+  .model-card h3 {
+    margin-top: 13px;
+    font-size: 24px;
+  }
+  .model-card .model-spec {
+    grid-column: 1;
+  }
+  .model-card > p {
+    grid-column: 2;
+    grid-row: 2 / 4;
+    margin: 10px 0;
+    font-size: 10px;
+  }
+  .model-card-links {
+    grid-column: 1;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  .model-card > .button {
+    grid-column: 2;
+    grid-row: 4 / 6;
+    align-self: end;
+  }
+  .hardware-badge {
+    display: none;
+  }
+  .setup-step {
+    gap: 14px;
+  }
+  .runtime-actions {
+    gap: 8px;
+  }
+  .runtime-actions .button {
+    font-size: 9px;
+    padding: 10px 12px;
+  }
+  .section-card-heading > .eyebrow {
+    display: none;
+  }
+  .standard-heading {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .standard-heading .button {
+    margin-top: 0;
+  }
+  .vocabulary-table-head,
+  .vocabulary-row {
+    grid-template-columns: 0.9fr 0.9fr 1.8fr 60px;
+    gap: 12px;
+  }
+  .row-actions {
+    gap: 0;
+  }
+  .practice-word-button {
+    padding: 6px;
+  }
+  .table-hanzi {
+    font-size: 22px;
+  }
+  .table-pinyin,
+  .table-meaning {
+    font-size: 9px;
+  }
+  .toast {
+    left: calc(50% + 90px);
+  }
+}
