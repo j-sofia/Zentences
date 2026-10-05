@@ -18,6 +18,10 @@ const generated = {
 };
 const chatResponse = (value) =>
   new Response(JSON.stringify({ message: { content: JSON.stringify(value) } }));
+const retryResponse = (attempt, value) => {
+  if (attempt > 20) throw new Error('Test response sequence exhausted');
+  return chatResponse(value);
+};
 afterEach(() => vi.useRealTimers());
 
 describe('local model engine', () => {
@@ -55,7 +59,7 @@ describe('local model engine', () => {
     const fetchImpl = vi
       .fn()
       .mockImplementation(async () =>
-        chatResponse(fetchImpl.mock.calls.length <= 5 ? { sentence: '我' } : generated),
+        chatResponse(fetchImpl.mock.calls.length <= 4 ? { sentence: '我' } : generated),
       );
     const output = await new ModelClient({ fetchImpl }).generate({
       model: 'qwen3:14b',
@@ -63,11 +67,105 @@ describe('local model engine', () => {
       target: '中文',
     });
     expect(output.sentence).toBe(generated.sentence);
-    expect(fetchImpl).toHaveBeenCalledTimes(6);
-    const messages = JSON.parse(fetchImpl.mock.calls[5][1].body).messages;
+    expect(fetchImpl).toHaveBeenCalledTimes(5);
+    expect(output.target).toEqual(words[2]);
+    const messages = JSON.parse(fetchImpl.mock.calls[4][1].body).messages;
     expect(messages).toHaveLength(4);
     expect(messages[1].content).toContain('中文');
     expect(messages[3].content).toContain('failed validation');
+  });
+  it('switches focus after every five rejected outputs and returns the actual target', async () => {
+    const fetchImpl = vi
+      .fn()
+      .mockImplementation(async () =>
+        retryResponse(
+          fetchImpl.mock.calls.length,
+          fetchImpl.mock.calls.length <= 10
+            ? { sentence: '我' }
+            : { ...generated, sentence: '中文。' },
+        ),
+      );
+    const output = await new ModelClient({ fetchImpl }).generate({
+      model: 'qwen3:14b',
+      words,
+      target: words[0],
+    });
+    const prompts = fetchImpl.mock.calls.map(([, request]) => JSON.parse(request.body).messages);
+    expect(prompts.map((messages) => JSON.parse(messages[1].content).focus)).toEqual([
+      '我',
+      '我',
+      '我',
+      '我',
+      '我',
+      '喜欢',
+      '喜欢',
+      '喜欢',
+      '喜欢',
+      '喜欢',
+      '中文',
+    ]);
+    expect(prompts[5]).toHaveLength(2);
+    expect(prompts[10]).toHaveLength(2);
+    expect(output.target).toEqual(words[2]);
+    expect(output.usedWords).toEqual(['中文']);
+  });
+  it('validates against the new focus and cycles through vocabulary before repeating', async () => {
+    const fetchImpl = vi.fn().mockImplementation(async () =>
+      retryResponse(fetchImpl.mock.calls.length, {
+        ...generated,
+        sentence: fetchImpl.mock.calls.length <= 15 ? '猫。' : '我。',
+      }),
+    );
+    const output = await new ModelClient({ fetchImpl }).generate({
+      model: 'qwen3:14b',
+      words,
+      target: '我',
+    });
+    expect(output.target).toEqual(words[0]);
+    const focuses = [0, 5, 10, 15].map(
+      (index) =>
+        JSON.parse(JSON.parse(fetchImpl.mock.calls[index][1].body).messages[1].content).focus,
+    );
+    expect(focuses).toEqual(['我', '喜欢', '中文', '我']);
+  });
+  it('rejects a sentence containing only the old focus after switching words', async () => {
+    const fetchImpl = vi
+      .fn()
+      .mockImplementation(async () =>
+        retryResponse(
+          fetchImpl.mock.calls.length,
+          fetchImpl.mock.calls.length <= 5
+            ? { sentence: '中文' }
+            : { ...generated, sentence: fetchImpl.mock.calls.length === 6 ? '中文。' : '我。' },
+        ),
+      );
+    const output = await new ModelClient({ fetchImpl }).generate({
+      model: 'qwen3:14b',
+      words,
+      target: '中文',
+    });
+    expect(fetchImpl).toHaveBeenCalledTimes(7);
+    expect(output.target).toEqual(words[0]);
+    expect(fetchImpl.mock.calls[6][1].body).toContain('Include 我 as an exact complete word');
+  });
+  it('keeps retrying when only one focus word is available', async () => {
+    const fetchImpl = vi
+      .fn()
+      .mockImplementation(async () =>
+        retryResponse(
+          fetchImpl.mock.calls.length,
+          fetchImpl.mock.calls.length <= 6
+            ? { sentence: '我' }
+            : { ...generated, sentence: '我。' },
+        ),
+      );
+    const output = await new ModelClient({ fetchImpl }).generate({
+      model: 'qwen3:14b',
+      words: [words[0]],
+      target: '我',
+    });
+    expect(output.target).toEqual(words[0]);
+    expect(fetchImpl).toHaveBeenCalledTimes(7);
   });
   it('cancels active generation and releases the model queue', async () => {
     const controller = new AbortController();
@@ -352,9 +450,9 @@ describe('local model engine', () => {
 it('keeps rejecting unlearned compounds beyond three attempts until safe', async () => {
   const bank = ['他', '是', '大', '人'].map((hanzi) => ({ hanzi, pinyin: '', meaning: '' }));
   const fetchImpl = vi.fn().mockImplementation(async () =>
-    chatResponse({
+    retryResponse(fetchImpl.mock.calls.length, {
       ...generated,
-      sentence: fetchImpl.mock.calls.length <= 8 ? '他是大人。' : '他。',
+      sentence: fetchImpl.mock.calls.length <= 8 ? '他是大人。' : '是。',
     }),
   );
   const output = await new ModelClient({ fetchImpl }).generate({
@@ -362,7 +460,7 @@ it('keeps rejecting unlearned compounds beyond three attempts until safe', async
     words: bank,
     target: '他',
   });
-  expect(output.sentence).toBe('他。');
+  expect(output.sentence).toBe('是。');
   expect(fetchImpl).toHaveBeenCalledTimes(9);
   expect(fetchImpl.mock.calls[8][1].body).toContain('Unlearned compound words: 大人');
 });

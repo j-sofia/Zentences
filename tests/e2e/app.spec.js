@@ -49,6 +49,74 @@ test('shows model onboarding when Ollama is unavailable', async ({ page }) => {
   await expect(page.getByText('Connected', { exact: true })).toBeVisible();
 });
 
+test('updates the focus selector when generation switches words', async ({ page }) => {
+  const bootstrap = await (await page.request.get('/api/bootstrap')).json();
+  const original = bootstrap.data.words.find((word) => word.hanzi === '我');
+  const replacement = bootstrap.data.words.find((word) => word.hanzi === '学校');
+  await page.route('**/api/generate', async (route) => {
+    const response = await route.fetch();
+    const body = await response.json();
+    body.data.target = replacement;
+    await route.fulfill({ json: body });
+  });
+  await page.goto('/');
+  await page.getByLabel('FOCUS WORD', { exact: true }).selectOption(original.id);
+  await page.getByRole('button', { name: 'Begin practice', exact: true }).click();
+  await expect(page.getByLabel('Your English translation')).toBeEditable();
+  await expect(page.getByLabel('FOCUS WORD', { exact: true })).toHaveValue(replacement.id);
+  await expect(page.locator('.focus-hanzi')).toHaveText('学校');
+});
+
+test('preserves Surprise me after switching focus and for the next sentence', async ({ page }) => {
+  const bootstrap = await (await page.request.get('/api/bootstrap')).json();
+  const replacement = bootstrap.data.words.find((word) => word.hanzi === '学校');
+  const inputs = [];
+  await page.route('**/api/generate', async (route) => {
+    inputs.push(route.request().postDataJSON());
+    const response = await route.fetch();
+    const body = await response.json();
+    body.data.target = replacement;
+    await route.fulfill({ json: body });
+  });
+  await page.goto('/');
+  await page.getByLabel('FOCUS WORD', { exact: true }).selectOption('');
+  await page.getByRole('button', { name: 'Begin practice', exact: true }).click();
+  await expect(page.getByLabel('Your English translation')).toBeEditable();
+  await expect(page.getByLabel('FOCUS WORD', { exact: true })).toHaveValue('');
+  await expect(page.locator('.focus-hanzi')).toHaveText('学校');
+  await page.getByRole('button', { name: 'Generate another sentence', exact: true }).click();
+  await expect(page.getByLabel('Your English translation')).toBeEditable();
+  expect(inputs).toHaveLength(2);
+  expect(inputs.every((input) => !Object.hasOwn(input, 'targetId'))).toBe(true);
+  await expect(page.getByLabel('FOCUS WORD', { exact: true })).toHaveValue('');
+});
+
+test('preserves a switch to Surprise me while generation is pending', async ({ page }) => {
+  const bootstrap = await (await page.request.get('/api/bootstrap')).json();
+  const original = bootstrap.data.words.find((word) => word.hanzi === '我');
+  const replacement = bootstrap.data.words.find((word) => word.hanzi === '学校');
+  let release;
+  const pending = new Promise((resolve) => {
+    release = resolve;
+  });
+  await page.route('**/api/generate', async (route) => {
+    await pending;
+    const response = await route.fetch();
+    const body = await response.json();
+    body.data.target = replacement;
+    await route.fulfill({ json: body });
+  });
+  await page.goto('/');
+  await page.getByLabel('FOCUS WORD', { exact: true }).selectOption(original.id);
+  await page.getByRole('button', { name: 'Begin practice', exact: true }).click();
+  await expect(page.getByText('Finding your next sentence…')).toBeVisible();
+  await page.getByLabel('FOCUS WORD', { exact: true }).selectOption('');
+  release();
+  await expect(page.getByLabel('Your English translation')).toBeEditable();
+  await expect(page.getByLabel('FOCUS WORD', { exact: true })).toHaveValue('');
+  await expect(page.locator('.focus-hanzi')).toHaveText('学校');
+});
+
 test('supports mobile navigation without horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');

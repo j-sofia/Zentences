@@ -272,7 +272,7 @@ export async function createApp({
           const exercise = {
             ...generated,
             id: randomUUID(),
-            target,
+            target: generated.target ?? target,
             difficulty,
             model: state.settings.model,
             createdAt: new Date().toISOString(),

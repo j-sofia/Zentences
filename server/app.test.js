@@ -102,26 +102,31 @@ describe('local app API', () => {
     });
   });
   it('returns a safe exercise after repeated model validation failures', async () => {
-    const fetchImpl = vi.fn().mockImplementation(
-      async () =>
-        new Response(
-          JSON.stringify({
-            message: {
-              content: JSON.stringify(
-                fetchImpl.mock.calls.length <= 5
-                  ? { ...generated, sentence: '你喜欢猫。' }
-                  : { ...generated, sentence: '你。' },
-              ),
-            },
-          }),
-        ),
-    );
+    const fetchImpl = vi.fn().mockImplementation(async () => {
+      if (fetchImpl.mock.calls.length > 20) throw new Error('Test response sequence exhausted');
+      return new Response(
+        JSON.stringify({
+          message: {
+            content: JSON.stringify(
+              fetchImpl.mock.calls.length <= 5
+                ? { ...generated, sentence: '你喜欢猫。' }
+                : { ...generated, sentence: '好。' },
+            ),
+          },
+        }),
+      );
+    });
     const client = new ModelClient({ fetchImpl });
     modelClient.generate.mockImplementation((input) => client.generate(input));
     const exercise = await generate();
-    expect(exercise.sentence).toBe('你。');
+    expect(exercise.sentence).toBe('好。');
+    expect(exercise.target.hanzi).toBe('好');
     expect(fetchImpl).toHaveBeenCalledTimes(6);
     expect(store.snapshot.exercises).toHaveLength(1);
+    expect(store.snapshot.exercises[0].target).toEqual(exercise.target);
+    const grade = await post('/api/grade', { exerciseId: exercise.id, answer: 'Good.' });
+    expect(grade.status).toBe(200);
+    expect(store.snapshot.history[0].targetId).toBe(exercise.target.id);
   });
   it('cancels disconnected generation without saving and releases the inference lock', async () => {
     let started;

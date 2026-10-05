@@ -58,6 +58,7 @@ export default function Practice({
       setNotice('Set up a local model to begin your practice.');
       return;
     }
+    const requestedTarget = override || targetId;
     const controller = new AbortController();
     generationRef.current = controller;
     await run('generate', async () => {
@@ -66,12 +67,14 @@ export default function Practice({
           method: 'POST',
           signal: controller.signal,
           body: JSON.stringify({
-            targetId: override || targetId || undefined,
+            targetId: requestedTarget || undefined,
             difficulty: settings.difficulty,
           }),
         });
         if (controller.signal.aborted) return;
         setExercise(result);
+        if (requestedTarget && result.target?.id)
+          setTargetId((current) => (current === requestedTarget ? result.target.id : current));
         setAnswer('');
         setFeedback(null);
         setShowAnswer(false);
